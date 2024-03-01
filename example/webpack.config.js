@@ -15,7 +15,7 @@ module.exports = async function (env, argv) {
   });
 
   config.entry = {
-    main: path.resolve(__dirname, 'index.js'),
+    main: path.resolve(__dirname, 'index.web.js'),
   };
 
   // We need to make sure that only one version is loaded for peerDependencies
