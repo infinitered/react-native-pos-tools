@@ -1,4 +1,6 @@
 {
+  "name": "ReactNativePosToolsExample",
+  "displayName": "ReactNativePosToolsExample",
   "expo": {
     "name": "example",
     "slug": "example",
