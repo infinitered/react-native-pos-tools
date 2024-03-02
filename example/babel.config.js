@@ -1,14 +1,15 @@
 const path = require('path');
 const pak = require('../package.json');
 
+/** @type {import('@babel/core').ConfigFunction} */
 module.exports = function (api) {
-  api.cache(true);
+  api.cache.never();
 
   return {
-    presets: ['babel-preset-expo'],
+    presets: ['module:@react-native/babel-preset'],
     plugins: [
       [
-        'module-resolver',
+        require.resolve('babel-plugin-module-resolver'),
         {
           extensions: ['.tsx', '.ts', '.js', '.json'],
           alias: {

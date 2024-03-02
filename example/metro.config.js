@@ -13,8 +13,6 @@ const rnwPath = fs.realpathSync(
   path.resolve(require.resolve('react-native-windows/package.json'), '..')
 );
 
-const defaultConfig = getDefaultConfig(__dirname);
-
 /**
  * Metro configuration
  * https://facebook.github.io/metro/docs/configuration
@@ -22,16 +20,12 @@ const defaultConfig = getDefaultConfig(__dirname);
  * @type {import('metro-config').MetroConfig}
  */
 const config = {
-  ...defaultConfig,
-
   projectRoot: __dirname,
   watchFolders: [root],
 
   // We need to make sure that only one version is loaded for peerDependencies
   // So we block them at the root, and alias them to the versions in example's node_modules
   resolver: {
-    ...defaultConfig.resolver,
-
     blacklistRE: exclusionList(
       modules.map(
         (m) =>
@@ -39,10 +33,15 @@ const config = {
       )
     ),
 
-    extraNodeModules: modules.reduce((acc, name) => {
-      acc[name] = path.join(__dirname, 'node_modules', name);
-      return acc;
-    }, {}),
+    extraNodeModules: modules.reduce(
+      (acc, name) => {
+        acc[name] = path.join(__dirname, 'node_modules', name);
+        return acc;
+      },
+      {
+        [pak.name]: root,
+      }
+    ),
 
     blockList: exclusionList([
       // This stops "react-native run-windows" from causing the metro server to crash if its already running
