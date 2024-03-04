@@ -32,7 +32,8 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli lib",
     "prepare": "bob build",
-    "release": "release-it"
+    "release": "release-it",
+    "windows": "react-native run-windows"
   },
   "keywords": [
     "react-native",
@@ -69,15 +70,18 @@
     "react": "18.2.0",
     "react-native": "0.73.4",
     "react-native-builder-bob": "^0.20.0",
+    "react-native-windows": "0.73.9",
     "release-it": "^15.0.0",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "metro-config": "^0.80.6"
   },
   "resolutions": {
     "@types/react": "^18.2.44"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-windows": "*"
   },
   "workspaces": [
     "example"
@@ -156,5 +160,16 @@
         }
       ]
     ]
+  },
+  "codegenConfig": {
+    "name": "ReactNativePosTools",
+    "type": "modules",
+    "jsSrcsDir": "src",
+    "windows": {
+      "namespace": "ReactNativePosTools",
+      "cppStringType": "std::string",
+      "separateDataTypes": false,
+      "outputDirectory": "codegen"
+    }
   }
 }

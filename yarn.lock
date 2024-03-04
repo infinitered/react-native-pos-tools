@@ -15936,6 +15936,7 @@ __metadata:
     react: 18.2.0
     react-native: 0.73.4
     react-native-builder-bob: ^0.20.0
+    react-native-windows: 0.73.9
     release-it: ^15.0.0
     typescript: ^5.2.2
   peerDependencies:
@@ -16012,6 +16013,58 @@ __metadata:
     react: 18.2.0
     react-native: ^0.73.0
   checksum: 8a3d751f1c567769306a7dc8dcd03773c2f141e7fd2b6bacca3be3ac3ada059b00e8c5a6ecae047d14acdf279189f0e8139eaefb89e074e5e6cbd482c58a0283
+  languageName: node
+  linkType: hard
+
+"react-native-windows@npm:0.73.9":
+  version: 0.73.9
+  resolution: "react-native-windows@npm:0.73.9"
+  dependencies:
+    "@babel/runtime": ^7.0.0
+    "@jest/create-cache-key-function": ^29.6.3
+    "@react-native-community/cli": 12.3.2
+    "@react-native-community/cli-platform-android": 12.3.2
+    "@react-native-community/cli-platform-ios": 12.3.2
+    "@react-native-windows/cli": 0.73.2
+    "@react-native/assets-registry": 0.73.1
+    "@react-native/codegen": 0.73.3
+    "@react-native/community-cli-plugin": 0.73.16
+    "@react-native/gradle-plugin": 0.73.4
+    "@react-native/js-polyfills": 0.73.1
+    "@react-native/normalize-colors": 0.73.2
+    "@react-native/virtualized-lists": 0.73.4
+    abort-controller: ^3.0.0
+    anser: ^1.4.9
+    ansi-regex: ^5.0.0
+    base64-js: ^1.5.1
+    chalk: ^4.0.0
+    deprecated-react-native-prop-types: ^5.0.0
+    event-target-shim: ^5.0.1
+    flow-enums-runtime: ^0.0.6
+    invariant: ^2.2.4
+    jest-environment-node: ^29.6.3
+    jsc-android: ^250231.0.0
+    memoize-one: ^5.0.0
+    metro-runtime: ^0.80.3
+    metro-source-map: ^0.80.3
+    mkdirp: ^0.5.1
+    nullthrows: ^1.1.1
+    pretty-format: ^26.5.2
+    promise: ^8.3.0
+    react-devtools-core: ^4.27.7
+    react-refresh: ^0.14.0
+    react-shallow-renderer: ^16.15.0
+    regenerator-runtime: ^0.13.2
+    scheduler: 0.24.0-canary-efb381bbf-20230505
+    source-map-support: ^0.5.19
+    stacktrace-parser: ^0.1.10
+    whatwg-fetch: ^3.0.0
+    ws: ^6.2.2
+    yargs: ^17.6.2
+  peerDependencies:
+    react: 18.2.0
+    react-native: ^0.73.0
+  checksum: f2cb4bb1e2c9e6f237d6b67ecba641b0bf6d99efa07b202ce97220b7269a2d058a39cf2f51adfbd2a7398c5fb18008df9d6fc2b482455f6755ab8997d427a7db
   languageName: node
   linkType: hard
 
