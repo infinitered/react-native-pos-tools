@@ -1,3 +1,4 @@
+// @ts-check
 const path = require('path');
 const createExpoWebpackConfigAsync = require('@expo/webpack-config');
 const { resolver } = require('./metro.config');
@@ -16,6 +17,10 @@ module.exports = async function (env, argv) {
 
   config.entry = {
     main: path.resolve(__dirname, 'index.web.js'),
+  };
+
+  config.resolve.fallback = {
+    stream: false,
   };
 
   // We need to make sure that only one version is loaded for peerDependencies
