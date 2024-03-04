@@ -9,6 +9,9 @@
 .vscode/
 jsconfig.json
 
+# Visual Studio
+msbuild.*
+
 # Xcode
 #
 build/
