@@ -4771,7 +4771,7 @@ __metadata:
     react-dom: 18.2.0
     react-native: 0.73.4
     react-native-web: ~0.19.6
-    react-native-windows: 0.73.8
+    react-native-windows: 0.73.9
   languageName: unknown
   linkType: soft
 
@@ -15932,15 +15932,18 @@ __metadata:
     eslint-config-prettier: ^9.0.0
     eslint-plugin-prettier: ^5.0.1
     jest: ^29.7.0
+    metro-config: ^0.80.6
     prettier: ^3.0.3
     react: 18.2.0
     react-native: 0.73.4
     react-native-builder-bob: ^0.20.0
+    react-native-windows: 0.73.9
     release-it: ^15.0.0
     typescript: ^5.2.2
   peerDependencies:
     react: "*"
     react-native: "*"
+    react-native-windows: "*"
   languageName: unknown
   linkType: soft
 
@@ -15963,9 +15966,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-windows@npm:0.73.8":
-  version: 0.73.8
-  resolution: "react-native-windows@npm:0.73.8"
+"react-native-windows@npm:0.73.9":
+  version: 0.73.9
+  resolution: "react-native-windows@npm:0.73.9"
   dependencies:
     "@babel/runtime": ^7.0.0
     "@jest/create-cache-key-function": ^29.6.3
@@ -16011,7 +16014,7 @@ __metadata:
   peerDependencies:
     react: 18.2.0
     react-native: ^0.73.0
-  checksum: 8a3d751f1c567769306a7dc8dcd03773c2f141e7fd2b6bacca3be3ac3ada059b00e8c5a6ecae047d14acdf279189f0e8139eaefb89e074e5e6cbd482c58a0283
+  checksum: f2cb4bb1e2c9e6f237d6b67ecba641b0bf6d99efa07b202ce97220b7269a2d058a39cf2f51adfbd2a7398c5fb18008df9d6fc2b482455f6755ab8997d427a7db
   languageName: node
   linkType: hard
 
