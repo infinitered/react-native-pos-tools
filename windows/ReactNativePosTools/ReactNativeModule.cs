@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +22,8 @@ namespace ReactNativePosTools
             _reactContext = reactContext;
         }
 
-        [ReactMethod("multiply")]
-        public double multiply(double a, double b)
+    [ReactSyncMethod("multiply")]
+    public double Multiply(double a, double b)
         {
             double result = a * b;
             return result;
