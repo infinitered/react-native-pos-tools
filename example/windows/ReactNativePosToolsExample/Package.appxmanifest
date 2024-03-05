@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="802bd153-b0d9-4d83-a26e-1d2549b34d32"
-    Publisher="CN=Work"
+    Name="86b2fad6-35eb-4ffb-b178-62deff5526b2"
+    Publisher="CN=m-00823-1"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="802bd153-b0d9-4d83-a26e-1d2549b34d32" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="86b2fad6-35eb-4ffb-b178-62deff5526b2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ReactNativePosToolsExample</DisplayName>
-    <PublisherDisplayName>Work</PublisherDisplayName>
+    <PublisherDisplayName>m-00823-1</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

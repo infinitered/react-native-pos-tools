@@ -1,11 +1,11 @@
 import ReactNativePosTools from './NativeReactNativePosTools';
 
 export const multiply = (a: number, b: number): number => {
-  if (ReactNativePosTools == null) {
-    throw new Error(
-      'ReactNativePosTools native module was not loaded properly'
-    );
+  const result = ReactNativePosTools?.multiply(a, b);
+
+  if (result === undefined) {
+    throw new Error('multiply returned null');
   }
 
-  return ReactNativePosTools.multiply(a, b);
+  return result;
 };
