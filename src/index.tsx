@@ -1,11 +1,19 @@
 import ReactNativePosTools from './NativeReactNativePosTools';
 
-export const multiply = (a: number, b: number): number => {
-  const result = ReactNativePosTools?.multiply(a, b);
-
-  if (result === undefined) {
-    throw new Error('multiply returned null');
+class MethodUndefinedError extends Error {
+  constructor(methodName: string) {
+    super(
+      `ReactNativePosTools ${methodName} method is not available. Please make sure you have linked the library properly.`
+    );
   }
+}
+
+export const multiply = (a: number, b: number): number => {
+  if (ReactNativePosTools?.multiply === undefined) {
+    throw new MethodUndefinedError('multiply');
+  }
+
+  const result = ReactNativePosTools.multiply(a, b);
 
   return result;
 };
