@@ -1,19 +1,39 @@
 import * as React from 'react';
+import { StyleSheet, View, Text, SectionList } from 'react-native';
+import { useDeviceInformation, usePosPrinter } from 'react-native-pos-tools';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { usePosPrinter } from 'react-native-pos-tools';
+interface SectionProps {
+  data: any;
+  error: Error | undefined;
+  loading: boolean;
+}
+
+const Section = ({ data, error, loading }: SectionProps) => {
+  return (
+    <View style={styles.section}>
+      {loading && <Text>Loading...</Text>}
+      {error && <Text>Error: {error.message}</Text>}
+      {data && <Text>{JSON.stringify(data, null, 2)}</Text>}
+    </View>
+  );
+};
 
 export default function App() {
-  const { data, error, loading } = usePosPrinter();
+  const posPrinter = usePosPrinter();
+  const deviceInformation = useDeviceInformation();
 
   return (
     <View style={styles.container}>
-      <View style={styles.box}>
-        <Text>POS Printer</Text>
-        {loading && <Text>Loading...</Text>}
-        {error && <Text>Error: {error.message}</Text>}
-        {data && <Text>DeviceId: {data.DeviceId}</Text>}
-      </View>
+      <SectionList<SectionProps>
+        sections={[
+          { title: 'POS Printer', data: [posPrinter], key: '1' },
+          { title: 'Device Information', data: [deviceInformation], key: '2' },
+        ]}
+        renderItem={({ item }) => <Section {...item} />}
+        renderSectionHeader={({ section: { title } }) => (
+          <Text style={styles.header}>{title}</Text>
+        )}
+      />
     </View>
   );
 }
@@ -23,11 +43,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white',
+    margin: 16,
   },
-  box: {
-    width: 200,
-    height: 400,
+  section: {
     marginVertical: 20,
+  },
+  header: {
+    fontSize: 20,
   },
 });
