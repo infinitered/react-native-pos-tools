@@ -1,18 +1,19 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-pos-tools';
+import { usePosPrinter } from 'react-native-pos-tools';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    setResult(multiply(3, 7));
-  }, []);
+  const { data, error, loading } = usePosPrinter();
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <View style={styles.box}>
+        <Text>POS Printer</Text>
+        {loading && <Text>Loading...</Text>}
+        {error && <Text>Error: {error.message}</Text>}
+        {data && <Text>DeviceId: {data.DeviceId}</Text>}
+      </View>
     </View>
   );
 }
@@ -25,8 +26,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   box: {
-    width: 60,
-    height: 60,
+    width: 200,
+    height: 400,
     marginVertical: 20,
   },
 });
