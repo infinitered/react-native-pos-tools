@@ -99,7 +99,6 @@ export const useDeviceInformation = () => {
       .findAllAsync()
       .then((devices) => {
         setData(devices);
-        console.log(devices);
       })
       .catch((err) => {
         setError(err);
