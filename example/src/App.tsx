@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, SectionList } from 'react-native';
-import { useDeviceInformation, usePosPrinter } from 'react-native-pos-tools';
+import {
+  useBarcodeScanner,
+  useDeviceInformation,
+  usePosPrinter,
+} from 'react-native-pos-tools';
 
 interface SectionProps {
   data: any;
@@ -21,13 +25,15 @@ const Section = ({ data, error, loading }: SectionProps) => {
 export default function App() {
   const posPrinter = usePosPrinter();
   const deviceInformation = useDeviceInformation();
+  const barcodeScanner = useBarcodeScanner();
 
   return (
     <View style={styles.container}>
       <SectionList<SectionProps>
         sections={[
-          { title: 'POS Printer', data: [posPrinter], key: '1' },
-          { title: 'Device Information', data: [deviceInformation], key: '2' },
+          { title: 'POS Printer', data: [posPrinter] },
+          { title: 'Barcode Scanner', data: [barcodeScanner] },
+          { title: 'Device Information', data: [deviceInformation] },
         ]}
         renderItem={({ item }) => <Section {...item} />}
         renderSectionHeader={({ section: { title } }) => (
