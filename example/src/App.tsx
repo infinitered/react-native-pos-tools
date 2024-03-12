@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, SectionList } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  SectionList,
+  TextInput,
+  FlatList,
+} from 'react-native';
 import {
   useBarcodeScanner,
   useCashDrawer,
@@ -23,9 +30,49 @@ const Section = ({ data, error, loading }: SectionProps) => {
   );
 };
 
+const DeviceInformation = () => {
+  const { data, loading, error } = useDeviceInformation();
+  const [search, setSearch] = React.useState('');
+  const filteredData = React.useMemo(
+    () =>
+      data?.filter((item) =>
+        JSON.stringify(item).toLowerCase().includes(search.toLowerCase())
+      ),
+    [data, search]
+  );
+
+  return (
+    <View style={{ height: '50%' }}>
+      <Text style={[styles.header, { marginBottom: 20 }]}>
+        Device Information
+      </Text>
+      <TextInput
+        style={{
+          height: 40,
+          borderColor: 'gray',
+          borderWidth: 1,
+        }}
+        onChangeText={setSearch}
+        value={search}
+        placeholder="Search"
+      />
+      <View style={styles.section}>
+        {loading && <Text>Loading...</Text>}
+        {error && <Text>Error: {error.message}</Text>}
+        <FlatList
+          data={filteredData}
+          renderItem={({ item }) => (
+            <Text>{JSON.stringify(item, null, 2)}</Text>
+          )}
+          keyExtractor={(item) => item.Id}
+        />
+      </View>
+    </View>
+  );
+};
+
 export default function App() {
   const posPrinter = usePosPrinter();
-  const deviceInformation = useDeviceInformation();
   const barcodeScanner = useBarcodeScanner();
   const cashDrawer = useCashDrawer();
 
@@ -36,13 +83,13 @@ export default function App() {
           { title: 'POS Printer', data: [posPrinter] },
           { title: 'Barcode Scanner', data: [barcodeScanner] },
           { title: 'Cash Drawer', data: [cashDrawer] },
-          { title: 'Device Information', data: [deviceInformation] },
         ]}
         renderItem={({ item }) => <Section {...item} />}
         renderSectionHeader={({ section: { title } }) => (
           <Text style={styles.header}>{title}</Text>
         )}
       />
+      <DeviceInformation />
     </View>
   );
 }
@@ -50,8 +97,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     margin: 16,
   },
   section: {
