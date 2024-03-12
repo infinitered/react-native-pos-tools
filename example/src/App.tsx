@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, Text, SectionList } from 'react-native';
 import {
   useBarcodeScanner,
+  useCashDrawer,
   useDeviceInformation,
   usePosPrinter,
 } from 'react-native-pos-tools';
@@ -26,6 +27,7 @@ export default function App() {
   const posPrinter = usePosPrinter();
   const deviceInformation = useDeviceInformation();
   const barcodeScanner = useBarcodeScanner();
+  const cashDrawer = useCashDrawer();
 
   return (
     <View style={styles.container}>
@@ -33,6 +35,7 @@ export default function App() {
         sections={[
           { title: 'POS Printer', data: [posPrinter] },
           { title: 'Barcode Scanner', data: [barcodeScanner] },
+          { title: 'Cash Drawer', data: [cashDrawer] },
           { title: 'Device Information', data: [deviceInformation] },
         ]}
         renderItem={({ item }) => <Section {...item} />}
