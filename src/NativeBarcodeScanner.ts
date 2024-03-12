@@ -3,8 +3,8 @@ import { TurboModuleRegistry } from 'react-native';
 
 export interface BarcodeScannerSpec extends TurboModule {
   /**
-   * Gets the default paired or locally-connected printer.
-   * @throws {Error} If no printer is found.
+   * Returns the first available barcode scanner.
+   * @throws {Error} A device is not found.
    * @see https://learn.microsoft.com/en-us/uwp/api/windows.devices.pointofservice.barcodescanner.getdefaultasync?view=winrt-22621#windows-devices-pointofservice-barcodescanner-getdefaultasync
    */
   getDefaultAsync(): Promise<ReactBarcodeScanner>;
