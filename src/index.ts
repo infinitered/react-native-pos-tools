@@ -6,6 +6,7 @@ import NativeDeviceInformation from './NativeDeviceInformation';
 import NativeBarcodeScanner, {
   type ReactBarcodeScanner,
 } from './NativeBarcodeScanner';
+import NativeCashDrawer, { type ReactCashDrawer } from './NativeCashDrawer';
 
 class MethodUndefinedError extends Error {
   constructor({
@@ -138,6 +139,45 @@ export const useBarcodeScanner = () => {
       .getDefaultAsync()
       .then((scanner) => {
         setData(scanner);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  return {
+    data,
+    error,
+    loading,
+  };
+};
+
+export const cashDrawer = {
+  getDefaultAsync: async () => {
+    if (NativeCashDrawer?.getDefaultAsync === undefined) {
+      throw new MethodUndefinedError({
+        moduleName: 'CashDrawer',
+        methodName: 'getDefaultAsync',
+      });
+    }
+
+    return NativeCashDrawer.getDefaultAsync();
+  },
+};
+
+export const useCashDrawer = () => {
+  const [data, setData] = React.useState<ReactCashDrawer | undefined>();
+  const [error, setError] = React.useState<Error | undefined>();
+  const [loading, setLoading] = React.useState<boolean>(true);
+
+  React.useEffect(() => {
+    cashDrawer
+      .getDefaultAsync()
+      .then((drawer) => {
+        setData(drawer);
       })
       .catch((err) => {
         setError(err);
